@@ -108,7 +108,6 @@ export default function Login() {
               <p className="font-bold text-forest-800 dark:text-cream-100">Demo access</p>
               <div className="mt-3 space-y-1.5 opacity-80">
                 <p>User: <span className="font-medium">demo@student.test / Demo@123</span></p>
-                <p>Admin: <span className="font-medium">admin@campuspaws.test / Admin@123</span></p>
               </div>
             </div>
 
