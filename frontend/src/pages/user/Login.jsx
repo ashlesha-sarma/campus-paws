@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import API from '../../api/api';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
-import { ArrowLeftIcon, LogoMark, MoonIcon, SunIcon } from '../../components/Icons';
+import { ArrowLeftIcon, LogoMark, MoonIcon, SunIcon, UserIcon } from '../../components/Icons';
 
 export default function Login() {
   const { setUser } = useAuth();
@@ -40,7 +40,7 @@ export default function Login() {
         <div className="card w-full p-8 shadow-2xl">
           <div className="mb-10 text-center">
             <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-terra-500 text-white shadow-lg">
-              <LogoMark className="h-6 w-6" />
+              <UserIcon className="h-6 w-6" />
             </div>
             <p className="section-kicker">Account Access</p>
             <h1 className="mt-2 text-3xl font-bold text-forest-950 dark:text-cream-100">Sign in</h1>

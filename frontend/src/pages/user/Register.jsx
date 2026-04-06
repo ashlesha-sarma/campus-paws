@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import API from '../../api/api';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
-import { ArrowLeftIcon, LogoMark, MoonIcon, SunIcon } from '../../components/Icons';
+import { ArrowLeftIcon, LogoMark, MoonIcon, SunIcon, UserIcon } from '../../components/Icons';
 
 export default function Register() {
   const { setUser } = useAuth();
@@ -35,7 +35,7 @@ export default function Register() {
         password: form.password,
       });
       setUser(r.data.user);
-      nav('/');
+      nav('/home');
     } catch (e) {
       setError(e.response?.data?.error || 'Registration failed. Please try again.');
     } finally {
@@ -49,118 +49,84 @@ export default function Register() {
         {dark ? <SunIcon className="h-4 w-4" /> : <MoonIcon className="h-4 w-4" />}
       </button>
 
-      <div className="mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-5xl items-center">
-        <div className="grid w-full gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="hidden rounded-2xl border border-cream-200 bg-white p-8 shadow-card lg:block dark:border-forest-800 dark:bg-forest-900">
-            <div className="mb-8 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-terra-500 text-white">
-                <LogoMark className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-base font-semibold text-forest-950 dark:text-cream-100">CampusPaws</p>
-                <p className="text-sm text-forest-500 dark:text-forest-400">Adoption and welfare platform</p>
-              </div>
+      <div className="mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-md items-center justify-center py-12">
+        <div className="card w-full p-8 shadow-2xl">
+          <div className="mb-10 text-center">
+            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-terra-500 text-white shadow-lg">
+              <UserIcon className="h-6 w-6" />
             </div>
-
-            <h1 className="text-4xl leading-tight text-forest-950 dark:text-cream-100">
-              Create an account to participate in responsible adoption and support efforts.
-            </h1>
-            <p className="mt-4 text-sm leading-7 text-forest-500 dark:text-forest-400">
-              Registration gives you access to adoption requests, donation activity, and community updates related to campus animals.
-            </p>
-
-            <div className="mt-8 space-y-3">
-              {[
-                'Submit and track adoption requests.',
-                'Contribute to verified donation drives.',
-                'Share updates and follow welfare activity.',
-              ].map((item) => (
-                <div key={item} className="rounded-xl border border-cream-200 bg-cream-50 px-4 py-3 text-sm text-forest-600 dark:border-forest-800 dark:bg-forest-800/70 dark:text-forest-300">
-                  {item}
-                </div>
-              ))}
-            </div>
+            <p className="section-kicker">New Account</p>
+            <h1 className="mt-2 text-3xl font-bold text-forest-950 dark:text-cream-100">Create your account</h1>
           </div>
 
-          <div className="card mx-auto w-full max-w-lg p-7 sm:p-8">
-            <div className="mb-8 text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-terra-500 text-white lg:hidden">
-                <LogoMark className="h-5 w-5" />
-              </div>
-              <p className="section-kicker">New Account</p>
-              <h2 className="mt-2 text-3xl text-forest-950 dark:text-cream-100">Create your account</h2>
-              <p className="mt-3 text-sm leading-7 text-forest-500 dark:text-forest-400">
-                Use your name, email address, and a secure password to get started.
-              </p>
+          <form onSubmit={submit} className="space-y-4">
+            <div>
+              <label className="label">Full name</label>
+              <input required value={form.name} onChange={set('name')} placeholder="Your full name" className="input" />
             </div>
 
-            <form onSubmit={submit} className="space-y-4">
-              <div>
-                <label className="label">Full name</label>
-                <input required value={form.name} onChange={set('name')} placeholder="Your full name" className="input" />
-              </div>
+            <div>
+              <label className="label">Email address</label>
+              <input type="email" required value={form.email} onChange={set('email')} placeholder="name@example.com" className="input" />
+            </div>
 
-              <div>
-                <label className="label">Email address</label>
-                <input type="email" required value={form.email} onChange={set('email')} placeholder="name@example.com" className="input" />
-              </div>
-
-              <div>
-                <label className="label">Password</label>
-                <div className="relative">
-                  <input
-                    type={showPw ? 'text' : 'password'}
-                    required
-                    value={form.password}
-                    onChange={set('password')}
-                    placeholder="Minimum 6 characters"
-                    className="input pr-16"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPw((value) => !value)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-medium text-forest-500 hover:text-forest-700 dark:text-forest-400 dark:hover:text-forest-200"
-                  >
-                    {showPw ? 'Hide' : 'Show'}
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label className="label">Confirm password</label>
+            <div>
+              <label className="label">Password</label>
+              <div className="relative">
                 <input
-                  type="password"
+                  type={showPw ? 'text' : 'password'}
                   required
-                  value={form.confirm}
-                  onChange={set('confirm')}
-                  placeholder="Repeat your password"
-                  className={`input ${form.confirm && form.password !== form.confirm ? 'input-error' : ''}`}
+                  value={form.password}
+                  onChange={set('password')}
+                  placeholder="Minimum 6 characters"
+                  className="input pr-16"
                 />
-                {form.confirm && form.password !== form.confirm && (
-                  <p className="mt-1 text-xs text-red-600 dark:text-red-300">Passwords do not match.</p>
-                )}
+                <button
+                  type="button"
+                  onClick={() => setShowPw((value) => !value)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-medium text-forest-500 hover:text-forest-700 dark:text-forest-400 dark:hover:text-forest-200"
+                >
+                  {showPw ? 'Hide' : 'Show'}
+                </button>
               </div>
+            </div>
 
-              {error && (
-                <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-900/20 dark:text-red-300">
-                  {error}
-                </div>
+            <div>
+              <label className="label">Confirm password</label>
+              <input
+                type="password"
+                required
+                value={form.confirm}
+                onChange={set('confirm')}
+                placeholder="Repeat your password"
+                className={`input ${form.confirm && form.password !== form.confirm ? 'input-error' : ''}`}
+              />
+              {form.confirm && form.password !== form.confirm && (
+                <p className="mt-1 text-xs text-red-600 dark:text-red-300">Passwords do not match.</p>
               )}
+            </div>
 
-              <button type="submit" disabled={loading} className={`btn-primary mt-2 w-full justify-center py-3 ${loading ? 'opacity-70' : ''}`}>
-                {loading ? 'Creating account' : 'Create Account'}
-              </button>
-            </form>
+            {error && (
+              <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-900/20 dark:text-red-300">
+                {error}
+              </div>
+            )}
 
-            <p className="mt-5 text-center text-sm text-forest-500 dark:text-forest-400">
+            <button type="submit" disabled={loading} className={`btn-primary mt-2 w-full justify-center py-4 text-base font-semibold shadow-lg transition-transform active:scale-[0.98] ${loading ? 'opacity-70' : ''}`}>
+              {loading ? 'Creating account...' : 'Create Account'}
+            </button>
+          </form>
+
+          <div className="mt-8 space-y-6">
+            <p className="text-center text-sm text-forest-500 dark:text-forest-400">
               Already registered?{' '}
-              <Link to="/login" className="font-medium text-terra-600 hover:text-terra-700 dark:text-terra-300">
+              <Link to="/login" className="font-semibold text-terra-600 hover:text-terra-700 dark:text-terra-300">
                 Sign in here
               </Link>
             </p>
 
-            <p className="mt-6 text-center">
-              <Link to="/" className="inline-flex items-center gap-2 text-sm text-forest-500 hover:text-terra-600 dark:text-forest-400 dark:hover:text-terra-300">
+            <p className="text-center border-t border-cream-200 pt-6 dark:border-forest-800">
+              <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium text-forest-500 hover:text-terra-600 transition-colors dark:text-forest-400 dark:hover:text-terra-300">
                 <ArrowLeftIcon className="h-4 w-4" />
                 Return to home
               </Link>
