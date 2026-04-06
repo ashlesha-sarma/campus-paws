@@ -87,12 +87,19 @@ export default function AdminLogin() {
             </button>
           </form>
 
-          <p className="mt-8 text-center">
-            <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium text-forest-500 hover:text-terra-600 transition-colors dark:text-forest-400 dark:hover:text-terra-300">
-              <ArrowLeftIcon className="h-4 w-4" />
-              Return to public site
-            </Link>
-          </p>
+            <div className="mt-8 rounded-2xl border border-terra-100 bg-terra-50/30 p-5 text-sm text-forest-600 dark:border-forest-800 dark:bg-forest-800/70 dark:text-forest-300">
+              <p className="font-bold text-forest-800 dark:text-cream-100">Demo access</p>
+              <div className="mt-3 space-y-1.5 opacity-80">
+                <p>Admin: <span className="font-medium">admin@campuspaws.test / Admin@123</span></p>
+              </div>
+            </div>
+
+            <p className="mt-8 text-center border-t border-cream-200 pt-6 dark:border-forest-800">
+              <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium text-forest-500 hover:text-terra-600 transition-colors dark:text-forest-400 dark:hover:text-terra-300">
+                <ArrowLeftIcon className="h-4 w-4" />
+                Return to public site
+              </Link>
+            </p>
         </div>
       </div>
     </div>
