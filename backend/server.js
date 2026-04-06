@@ -10,18 +10,21 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
   process.env.FRONTEND_URL,
-  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null
+  'https://campus-paws.onrender.com', // Added possible render url
+  'https://campuspaws-frontend.onrender.com'
 ].filter(Boolean);
 
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
+    // Flexible check: includes and startsWith
+    const isAllowed = allowedOrigins.some(ao => origin.startsWith(ao));
+    if (isAllowed) {
+      return callback(null, true);
+    } else {
       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
       return callback(new Error(msg), false);
     }
-    return callback(null, true);
   },
   credentials: true
 }));
@@ -29,14 +32,18 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const isProd = process.env.NODE_ENV === 'production';
+
 app.use(session({
   store: new SQLiteStore({ db: 'sessions.db', dir: __dirname }),
-  secret: 'campuspaws-secret-2025',
+  secret: process.env.SESSION_SECRET || 'campuspaws-secret-2025',
   resave: false,
   saveUninitialized: false,
+  proxy: isProd, // Required for secure cookies on Render
   cookie: {
-    secure: false,
+    secure: isProd, // true in production
     httpOnly: true,
+    sameSite: isProd ? 'none' : 'lax', // Use 'none' for cross-domain sessions
     maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
   }
 }));

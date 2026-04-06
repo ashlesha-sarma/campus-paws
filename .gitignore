@@ -5,9 +5,5 @@ sessions.db
 .env
 dist/
 .DS_Store
-backend/uploads/*.jpg
-backend/uploads/*.jpeg
-backend/uploads/*.png
-backend/uploads/*.webp
-backend/uploads/*.avif
-!backend/uploads/placeholder.png
+# Keep uploads for free tier deployment
+!backend/uploads/
