@@ -105,9 +105,9 @@ export default function Landing() {
         <div className="page-container py-16 md:py-20">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="max-w-2xl space-y-6">
-              <p className="section-kicker">Tezpur University Animal Welfare Initiative</p>
+              <p className="section-kicker">University Animal Welfare Initiative</p>
               <h1 className="max-w-3xl text-4xl leading-tight text-forest-950 dark:text-cream-100 md:text-5xl lg:text-6xl">
-                Responsible adoption and practical support for campus animals.
+                Responsible adoption and support for campus animals.
               </h1>
               <p className="max-w-xl text-lg leading-8 text-forest-600 dark:text-forest-300">
                 CampusPaws helps students and animal caregivers connect through adoption, treatment support, and community-led welfare initiatives.
@@ -122,17 +122,7 @@ export default function Landing() {
                 </Link>
               </div>
 
-              <div className="grid gap-3 pt-2 sm:grid-cols-3">
-                {[
-                  'Profiles include health and vaccination information.',
-                  'Applications are reviewed for suitability and safety.',
-                  'Donations support treatment, food, and shelter needs.',
-                ].map((item) => (
-                  <div key={item} className="surface-muted rounded-xl p-4 text-sm leading-6 text-forest-600 dark:text-forest-300">
-                    {item}
-                  </div>
-                ))}
-              </div>
+
             </div>
 
             <div className="space-y-4">
@@ -186,9 +176,6 @@ export default function Landing() {
               <p className="section-kicker">Current Impact</p>
               <h2 className="section-title mt-2">A growing campus support network</h2>
             </div>
-            <p className="hidden max-w-sm text-sm leading-6 text-forest-500 dark:text-forest-400 md:block">
-              These figures reflect the combined effort of student volunteers, caregivers, adopters, and donors.
-            </p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
