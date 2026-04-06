@@ -37,12 +37,12 @@ export default function Portal() {
         {dark ? <SunIcon className="h-4 w-4" /> : <MoonIcon className="h-4 w-4" />}
       </button>
 
-      <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center py-20">
-        <div className="mb-14 text-center">
-          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-[2.5rem] bg-terra-500 text-white shadow-terra-glow">
-            <LogoMark className="h-10 w-10" />
+      <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center py-10 sm:py-20">
+        <div className="mb-10 text-center sm:mb-14">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-[2rem] bg-terra-500 text-white shadow-terra-glow sm:mb-8 sm:h-20 sm:w-20 sm:rounded-[2.5rem]">
+            <LogoMark className="h-8 w-8 sm:h-10 sm:w-10" />
           </div>
-          <h1 className="text-6xl font-black tracking-tight text-forest-950 sm:text-8xl dark:text-cream-100">
+          <h1 className="text-5xl font-black tracking-tight text-forest-950 sm:text-6xl lg:text-8xl dark:text-cream-100">
             Campus<span className="text-terra-500">Paws</span>
           </h1>
         </div>
