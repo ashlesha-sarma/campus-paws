@@ -86,13 +86,13 @@ export default function AdminDashboard() {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className="rounded-xl border border-cream-200 p-4 transition-colors hover:border-terra-300 hover:bg-terra-50 dark:border-forest-700 dark:hover:bg-forest-800"
+                  className="rounded-xl border border-terra-100 bg-terra-50/30 p-4 shadow-sm transition-all duration-200 hover:border-terra-300 hover:bg-terra-50 hover:shadow-md dark:border-forest-700 dark:bg-forest-900 dark:hover:bg-forest-800"
                 >
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-terra-50 text-terra-600 dark:bg-terra-900/20 dark:text-terra-300">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-terra-500 text-white shadow-sm">
                     <Icon className="h-4 w-4" />
                   </div>
-                  <p className="text-sm font-medium text-forest-900 dark:text-cream-100">{item.label}</p>
-                  <p className="mt-1 text-xs text-forest-500 dark:text-forest-400">{item.desc}</p>
+                  <p className="text-sm font-semibold text-forest-900 dark:text-cream-100">{item.label}</p>
+                  <p className="mt-1 text-xs text-terra-700 dark:text-forest-400 font-medium">{item.desc}</p>
                 </Link>
               );
             })}

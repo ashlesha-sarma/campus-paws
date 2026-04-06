@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import API from '../../api/api';
 import DonationCard from '../../components/DonationCard';
 import { SkeletonCard } from '../../components/Skeleton';
-import { CheckCircleIcon, HeartIcon, UsersIcon } from '../../components/Icons';
+import { CheckCircleIcon, HeartIcon } from '../../components/Icons';
 
 function AnimatedNumber({ value, prefix = '', suffix = '' }) {
   const [displayed, setDisplayed] = useState(0);
@@ -74,7 +74,7 @@ export default function Donations() {
           {/* Summary stats */}
           {!loading && drives.length > 0 && (
             <div
-              className="mt-8 grid gap-4 sm:grid-cols-3 max-w-2xl"
+              className="mt-8 grid gap-4 sm:grid-cols-2 max-w-xl"
               style={{ animation: 'slide-up-fade 0.6s ease both' }}
             >
               {[
@@ -86,14 +86,7 @@ export default function Donations() {
                   bg: 'bg-terra-50',
                   border: 'border-terra-200',
                 },
-                {
-                  icon: UsersIcon,
-                  label: 'Donors',
-                  value: <AnimatedNumber value={totalDonors} />,
-                  color: 'text-forest-700',
-                  bg: 'bg-forest-50',
-                  border: 'border-forest-200',
-                },
+
                 {
                   icon: CheckCircleIcon,
                   label: 'Overall funded',

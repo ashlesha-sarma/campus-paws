@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ClockIcon, HeartIcon, UsersIcon } from './Icons';
+import { ClockIcon, HeartIcon } from './Icons';
 
 function MiniProgressBar({ pct }) {
   const [display, setDisplay] = useState(0);
@@ -112,12 +112,8 @@ export default function DonationCard({ drive }) {
             </span>
           </div>
           <MiniProgressBar pct={pct} />
-          <div className="flex items-center justify-between text-xs text-forest-500 dark:text-forest-400">
+          <div className="flex items-center text-xs text-forest-500 dark:text-forest-400">
             <span className="font-medium text-terra-600 dark:text-terra-300">{pct}% funded</span>
-            <span className="flex items-center gap-1">
-              <UsersIcon className="h-3.5 w-3.5" />
-              {drive.donor_count || 0} donors
-            </span>
           </div>
         </div>
 

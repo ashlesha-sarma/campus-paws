@@ -42,16 +42,16 @@ export default function AdminLayout() {
     <aside
       className={`${
         mobile ? 'fixed inset-y-0 left-0 z-50 w-72' : 'hidden lg:flex w-72'
-      } flex-shrink-0 flex-col border-r border-forest-800 bg-forest-950 text-cream-100`}
+      } flex-shrink-0 flex-col border-r border-terra-200 bg-terra-50/30 dark:border-forest-800 dark:bg-forest-950`}
     >
-      <div className="border-b border-forest-800 p-6">
+      <div className="border-b border-terra-200 p-6 dark:border-forest-800">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-terra-500 text-white">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-terra-500 text-white shadow-sm">
             <LogoMark className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-base font-semibold text-cream-100">CampusPaws</p>
-            <p className="text-xs text-forest-400">Administration</p>
+            <p className="text-base font-semibold text-forest-950 dark:text-cream-100">CampusPaws</p>
+            <p className="text-xs text-terra-600 dark:text-forest-400 font-medium">Administration</p>
           </div>
         </div>
       </div>
@@ -65,10 +65,10 @@ export default function AdminLayout() {
               to={item.to}
               onClick={() => setSidebarOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium ${
+                `flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? 'border border-terra-500/30 bg-terra-500/15 text-terra-300'
-                    : 'text-forest-300 hover:bg-forest-800 hover:text-cream-100'
+                    ? 'border border-terra-500/20 bg-terra-500/10 text-terra-700 shadow-sm dark:border-terra-500/30 dark:bg-terra-500/15 dark:text-terra-300'
+                    : 'text-forest-600 hover:bg-terra-100 hover:text-terra-700 dark:text-forest-400 dark:hover:bg-forest-800 dark:hover:text-cream-100'
                 }`
               }
             >
@@ -79,19 +79,19 @@ export default function AdminLayout() {
         })}
       </nav>
 
-      <div className="border-t border-forest-800 p-4">
+      <div className="border-t border-terra-200 p-4 dark:border-forest-800">
         <div className="mb-3 flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-terra-900/20 text-sm font-semibold text-terra-300">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-terra-500 text-sm font-semibold text-white shadow-sm">
             {user.name.charAt(0).toUpperCase()}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium text-cream-100">{user.name}</p>
-            <p className="truncate text-xs text-forest-400">{user.email}</p>
+            <p className="truncate text-sm font-medium text-forest-950 dark:text-cream-100">{user.name}</p>
+            <p className="truncate text-xs text-terra-600 dark:text-forest-400 font-medium">{user.email}</p>
           </div>
         </div>
         <button
           onClick={handleLogout}
-          className="w-full rounded-lg border border-red-900/40 px-3 py-2 text-left text-sm text-red-300 hover:bg-red-900/20"
+          className="w-full rounded-xl border border-red-200 px-3 py-2.5 text-left text-sm font-medium text-red-600 hover:bg-red-50 transition-colors dark:border-red-900/40 dark:text-red-300 dark:hover:bg-red-900/20"
         >
           Sign Out
         </button>
