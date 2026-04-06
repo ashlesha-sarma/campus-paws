@@ -3,8 +3,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 
-import UserLayout from './components/UserLayout';
-import AdminLayout from './components/AdminLayout';
+import Portal       from './pages/Portal';
+import UserLayout   from './components/UserLayout';
+import AdminLayout  from './components/AdminLayout';
 
 import Landing      from './pages/user/Landing';
 import Animals      from './pages/user/Animals';
@@ -30,11 +31,16 @@ export default function App() {
     <ThemeProvider>
       <AuthProvider>
         <Routes>
+          {/* Gate Portal */}
+          <Route path="/"            element={<Portal />} />
+
+          {/* Auth */}
           <Route path="/login"       element={<Login />} />
           <Route path="/register"    element={<Register />} />
           <Route path="/admin/login" element={<AdminLogin />} />
 
-          <Route path="/" element={<UserLayout />}>
+          {/* Site / User App */}
+          <Route path="/home" element={<UserLayout />}>
             <Route index element={<Landing />} />
             <Route path="animals"      element={<Animals />} />
             <Route path="animals/:id"  element={<AnimalDetail />} />
@@ -46,6 +52,7 @@ export default function App() {
             <Route path="profile"      element={<Profile />} />
           </Route>
 
+          {/* Admin App */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="dashboard"      element={<AdminDashboard />} />

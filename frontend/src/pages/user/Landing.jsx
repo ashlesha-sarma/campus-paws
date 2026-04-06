@@ -114,10 +114,10 @@ export default function Landing() {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                <Link to="/animals" className="btn-primary">
+                <Link to="/home/animals" className="btn-primary">
                   View Animals
                 </Link>
-                <Link to="/donations" className="btn-ghost">
+                <Link to="/home/donations" className="btn-ghost">
                   Support Care Efforts
                 </Link>
               </div>
@@ -224,7 +224,7 @@ export default function Landing() {
                 Review a few recent profiles below or browse the full directory for more details.
               </p>
             </div>
-            <Link to="/animals" className="btn-ghost btn-sm">
+            <Link to="/home/animals" className="btn-ghost btn-sm">
               View All Animals
               <ArrowRightIcon className="h-4 w-4" />
             </Link>
@@ -249,10 +249,10 @@ export default function Landing() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3 lg:justify-end">
-              <Link to="/donations" className="btn-primary">
+              <Link to="/home/donations" className="btn-primary">
                 View Donation Drives
               </Link>
-              <Link to="/explore" className="btn-ghost">
+              <Link to="/home/explore" className="btn-ghost">
                 Read Community Updates
               </Link>
             </div>

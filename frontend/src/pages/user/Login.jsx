@@ -22,7 +22,7 @@ export default function Login() {
     try {
       const r = await API.post('/auth/login', { email, password });
       setUser(r.data.user);
-      nav(r.data.user.role === 'admin' ? '/admin' : '/');
+      nav(r.data.user.role === 'admin' ? '/admin' : '/home');
     } catch (e) {
       setError(e.response?.data?.error || 'Sign in failed. Please check your credentials.');
     } finally {

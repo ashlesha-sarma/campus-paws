@@ -45,9 +45,9 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { to: '/animals', label: 'Animals' },
-    { to: '/donations', label: 'Support' },
-    { to: '/explore', label: 'Community' },
+    { to: '/home/animals', label: 'Animals' },
+    { to: '/home/donations', label: 'Support' },
+    { to: '/home/explore', label: 'Community' },
   ];
 
   return (
@@ -58,7 +58,7 @@ export default function Navbar() {
     >
       <div className="page-container">
         <div className="flex h-[4.5rem] items-center justify-between border-b border-transparent">
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/home" className="flex items-center gap-3 group">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-terra-500 text-white">
               <LogoMark className="h-5 w-5" />
             </div>
@@ -111,7 +111,7 @@ export default function Navbar() {
                 {dropOpen && (
                   <div className="absolute right-0 top-full z-50 mt-2 w-56 overflow-hidden rounded-xl border border-cream-300 bg-white shadow-card dark:border-forest-700 dark:bg-forest-900">
                     <Link
-                      to="/profile"
+                      to="/home/profile"
                       onClick={() => setDropOpen(false)}
                       className="flex items-center gap-3 px-4 py-3 text-sm text-forest-700 hover:bg-cream-50 dark:text-forest-300 dark:hover:bg-forest-800"
                     >
@@ -189,7 +189,7 @@ export default function Navbar() {
 
               {user && (
                 <Link
-                  to="/profile"
+                  to="/home/profile"
                   onClick={() => setMenuOpen(false)}
                   className="mt-2 flex items-center gap-2 rounded-lg border border-cream-200 px-3 py-2.5 text-sm text-forest-700 dark:border-forest-800 dark:text-forest-300"
                 >

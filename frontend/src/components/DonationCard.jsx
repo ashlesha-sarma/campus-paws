@@ -120,7 +120,7 @@ export default function DonationCard({ drive }) {
         {/* CTA */}
         {drive.is_active ? (
           <Link
-            to={`/donations/${drive.id}`}
+            to={`/home/donations/${drive.id}`}
             className="btn-donate w-full"
           >
             <HeartIcon className="h-4 w-4" />

@@ -25,9 +25,9 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
               {[
-                ['Animals', '/animals'],
-                ['Donation Drives', '/donations'],
-                ['Community Updates', '/explore'],
+                ['Animals', '/home/animals'],
+                ['Donation Drives', '/home/donations'],
+                ['Community Updates', '/home/explore'],
                 ['Create Account', '/register'],
               ].map(([label, to]) => (
                 <li key={to}>

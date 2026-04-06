@@ -93,11 +93,11 @@ export default function AnimalCard({ animal }) {
         </div>
 
         <div className="grid gap-2 pt-1 sm:grid-cols-2">
-          <Link to={`/animals/${animal.id}`} className="btn-ghost btn-sm justify-center">
+          <Link to={`/home/animals/${animal.id}`} className="btn-ghost btn-sm justify-center">
             View Details
           </Link>
           {canAdopt && (
-            <Link to={`/adopt/${animal.id}`} className="btn-primary btn-sm justify-center">
+            <Link to={`/home/adopt/${animal.id}`} className="btn-primary btn-sm justify-center">
               Apply to Adopt
             </Link>
           )}
