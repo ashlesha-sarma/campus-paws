@@ -14,7 +14,6 @@ import {
   HeartIcon,
   LogoMark,
   ShareIcon,
-  UsersIcon,
   XCircleIcon,
   XIcon,
 } from '../../components/Icons';
@@ -580,9 +579,8 @@ export default function DriveDetail() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-3 border-y border-cream-200 py-4 dark:border-forest-700">
+                <div className="grid grid-cols-2 gap-3 border-y border-cream-200 py-4 dark:border-forest-700">
                   {[
-                    { icon: UsersIcon,      value: drive.donor_count || 0,    label: 'Donors' },
                     { icon: HeartIcon,      value: `${pct.toFixed(0)}%`,      label: 'Funded' },
                     { icon: ClockIcon,      value: daysLeft != null ? (daysLeft === 0 ? 'Today' : `${daysLeft}d`) : 'Open', label: 'Left' },
                   ].map((item) => {

@@ -17,9 +17,6 @@ export default function Footer() {
                 <p className="text-sm text-forest-500 dark:text-forest-400">Animal welfare initiative</p>
               </div>
             </div>
-            <p className="max-w-md text-sm leading-6 text-forest-600 dark:text-forest-300">
-              CampusPaws supports the rescue, treatment, fostering, and responsible adoption of campus animals through a student-led welfare network.
-            </p>
           </div>
 
           <div>
@@ -49,22 +46,19 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-forest-600 dark:text-forest-300">
               <div className="flex items-start gap-2.5">
                 <BuildingIcon className="mt-0.5 h-4 w-4 flex-shrink-0 text-terra-500" />
-                <div>
-                  <p>Tezpur University, Napaam</p>
-                  <p>Sonitpur, Assam 784028</p>
-                </div>
+                  <p>Tezpur University</p>
               </div>
               <div className="flex items-center gap-2.5">
                 <MailIcon className="h-4 w-4 flex-shrink-0 text-terra-500" />
-                <p>campuspaws@tezpur.ac.in</p>
+                <p>campuspaws@test.com</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-cream-200 pt-6 text-sm text-forest-500 dark:border-forest-800 dark:text-forest-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>Copyright 2025 CampusPaws. All rights reserved.</p>
-          <p>Created by students of the Department of Computer Science and Engineering.</p>
+          <p>Copyright 2026 CampusPaws. All rights reserved.</p>
+          <p>Created by Ashlesha Sarma</p>
         </div>
       </div>
     </footer>
