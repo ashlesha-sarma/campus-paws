@@ -127,14 +127,14 @@ db.serialize(() => {
         ['Moti','dog','Pomeranian',1,'Male','Healthy','Vaccinated','Up for adoption','Near Library','Inside VC Office Lawn','/uploads/moti.jpg','Moti is a tiny ball of fluff with enormous personality. He will steal your heart immediately.'],
         ['Nala','cat','Ragdoll',2,'Female','Healthy','Vaccinated','Up for adoption','Outside Admin Block','Near Main Gate','/uploads/nala.jpg','Nala is a gorgeous ragdoll cat who goes limp with affection when you pick her up.'],
         ['Raja','dog','German Shepherd',6,'Male','Needs treatment','Not vaccinated','Cannot be adopted','Outside Engineering Block','Next to Workshop','/uploads/Raja.avif','Raja is a senior shepherd being treated for arthritis. He deserves so much love.'],
-        ['Maya','cat','Bombay',2,'Female','Healthy','Vaccinated','Up for adoption','Near Bus Stop','Ground Floor Garden','/uploads/placeholder.png','Maya is a sleek black cat with bright golden eyes. She is curious and playful.'],
-        ['Cooper','dog','Dachshund',3,'Male','Healthy','Vaccinated','Up for adoption','Near Canteen','Next to Volleyball Court','/uploads/placeholder.png','Cooper the Dachshund is brave despite his short legs. He loves exploring every corner of campus.'],
-        ['Ginger','cat','Maine Coon',2,'Female','Healthy','Vaccinated','Up for adoption','Behind Lecture Hall 2','At Chemistry Garden','/uploads/placeholder.png','Ginger is a fluffy Maine Coon who loves being brushed and sitting on laps during study sessions.'],
-        ['Sparky','dog','Pug',2,'Male','Healthy','Vaccinated','Up for adoption','Near Old Library','Ground Floor Canopy','/uploads/placeholder.png','Sparky is the happiest pug on campus. His wrinkled face and curly tail will make your day.'],
-        ['Buddy','dog','Golden Retriever',3,'Male','Healthy','Vaccinated','Up for adoption','Near Girls Hostel','Front of Hostel 7','/uploads/placeholder.png','Buddy is a certified good boy. He is trained, gentle, and absolutely loves children.'],
-        ['Tiger','dog','Mixed',2,'Male','Healthy','Vaccinated','Up for adoption','Outside Admin','Near RO Plant','/uploads/placeholder.png','Tiger got his name for his bold stripes. He is playful, energetic, and loves tug-of-war.'],
-        ['Zara','cat','Oriental',2,'Female','Healthy','Vaccinated','Up for adoption','Outside Workshop','Between Library and Block C','/uploads/placeholder.png','Zara is an elegant Oriental cat with large ears and a slim figure. Very affectionate.'],
-        ['Juno','cat','Ragdoll',1,'Female','Healthy','Vaccinated','Up for adoption','Outside Exam Center','Near Main Library','/uploads/placeholder.png','Juno is a baby ragdoll kitten with the most striking blue eyes. She loves to cuddle.']
+        ['Maya','cat','Bombay',2,'Female','Healthy','Vaccinated','Up for adoption','Near Bus Stop','Ground Floor Garden','/uploads/maya.jpg','Maya is a sleek black cat with bright golden eyes. She is curious and playful.'],
+        ['Cooper','dog','Dachshund',3,'Male','Healthy','Vaccinated','Up for adoption','Near Canteen','Next to Volleyball Court','/uploads/cooper.jpg','Cooper the Dachshund is brave despite his short legs. He loves exploring every corner of campus.'],
+        ['Ginger','cat','Maine Coon',2,'Female','Healthy','Vaccinated','Up for adoption','Behind Lecture Hall 2','At Chemistry Garden','/uploads/ginger.png','Ginger is a fluffy Maine Coon who loves being brushed and sitting on laps during study sessions.'],
+        ['Sparky','dog','Pug',2,'Male','Healthy','Vaccinated','Up for adoption','Near Old Library','Ground Floor Canopy','/uploads/sparky.jpg','Sparky is the happiest pug on campus. His wrinkled face and curly tail will make your day.'],
+        ['Buddy','dog','Golden Retriever',3,'Male','Healthy','Vaccinated','Up for adoption','Near Girls Hostel','Front of Hostel 7','/uploads/buddy.jpg','Buddy is a certified good boy. He is trained, gentle, and absolutely loves children.'],
+        ['Tiger','dog','Mixed',2,'Male','Healthy','Vaccinated','Up for adoption','Outside Admin','Near RO Plant','/uploads/tiger.avif','Tiger got his name for his bold stripes. He is playful, energetic, and loves tug-of-war.'],
+        ['Zara','cat','Oriental',2,'Female','Healthy','Vaccinated','Up for adoption','Outside Workshop','Between Library and Block C','/uploads/zara.webp','Zara is an elegant Oriental cat with large ears and a slim figure. Very affectionate.'],
+        ['Juno','cat','Ragdoll',1,'Female','Healthy','Vaccinated','Up for adoption','Outside Exam Center','Near Main Library','/uploads/juno.avif','Juno is a baby ragdoll kitten with the most striking blue eyes. She loves to cuddle.']
       ];
       const stmt = db.prepare(`INSERT INTO animals (name,species,breed,age,gender,health_status,vaccination_status,up_for_adoption,location_found,current_location,image_path,description) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`);
       animals.forEach(a => stmt.run(a));
@@ -148,7 +148,7 @@ db.serialize(() => {
       db.run(`INSERT INTO donation_drives (title, description, target_amount, raised_amount, photo, deadline, is_active) VALUES
         ('Emergency Vet Fund', 'Help us provide urgent medical care for injured and sick campus strays. Every rupee helps us cover vet bills, medicines, and emergency surgeries.', 50000, 18500, '/uploads/drive1.jpeg', '2026-06-30', 1),
         ('Campus Shelter Build', 'Help us build a proper shelter near the hostels where animals can rest safely, especially during monsoons and cold nights.', 80000, 31000, '/uploads/drive2.jpg', '2026-07-31', 1),
-        ('Vaccination Drive 2026', 'Fund our annual vaccination camp to vaccinate 50+ campus animals against rabies and distemper. Protect animals and humans alike.', 25000, 9800, '/uploads/placeholder.png', '2026-05-15', 1)`);
+        ('Vaccination Drive 2026', 'Fund our annual vaccination camp to vaccinate 50+ campus animals against rabies and distemper. Protect animals and humans alike.', 25000, 9800, '/uploads/vaccination drive animal.jpg', '2026-05-15', 1)`);
     }
   });
 
