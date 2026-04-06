@@ -358,17 +358,7 @@ function DonationModal({ drive, user, onClose, onSuccess }) {
   );
 }
 
-// ─── Recent donors helpers ────────────────────────────────────────────────────
-const FAKE_NAMES = ['Asha M.', 'Rahul K.', 'Priya S.', 'Ankit D.', 'Neha B.', 'Vivek R.', 'Sneha T.', 'Arjun P.', 'Kavya L.', 'Mohan G.'];
-const randAmount = () => [100, 200, 250, 500, 1000, 1500, 2000][Math.floor(Math.random() * 7)];
 
-function timeAgo(dateStr) {
-  const diff = (Date.now() - new Date(dateStr)) / 1000;
-  if (diff < 60)    return 'just now';
-  if (diff < 3600)  return Math.floor(diff / 60)   + 'm ago';
-  if (diff < 86400) return Math.floor(diff / 3600)  + 'h ago';
-  return Math.floor(diff / 86400) + 'd ago';
-}
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
 function Toast({ toast, onClose }) {
@@ -397,7 +387,7 @@ export default function DriveDetail() {
   const { user } = useAuth();
 
   const [drive,       setDrive]       = useState(null);
-  const [recentDonors, setRecent]     = useState([]);
+
   const [loading,      setLoading]    = useState(true);
   const [showModal,    setShowModal]  = useState(false);
   const [toast,        setToast]      = useState(null);
@@ -406,20 +396,11 @@ export default function DriveDetail() {
   const pbRef = useRef(null);
 
   const fetchDrive = useCallback(() => {
-    return Promise.all([
-      API.get(`/donations/drives/${id}`),
-      API.get(`/donations/drives/${id}/recent`),
-    ]).then(([d, r]) => {
-      setDrive(d.data);
-      const real = (r.data || []).map((x) => ({ ...x, real: true }));
-      const fill = Array.from({ length: Math.max(0, 8 - real.length) }, (_, i) => ({
-        donor_name: FAKE_NAMES[i % FAKE_NAMES.length],
-        amount: randAmount(),
-        date: new Date(Date.now() - (i + 1) * 3600000 * (Math.random() * 24 + 1)).toISOString(),
-        real: false,
-      }));
-      setRecent([...real, ...fill].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 8));
-    }).finally(() => setLoading(false));
+    return API.get(`/donations/drives/${id}`)
+      .then((res) => {
+        setDrive(res.data);
+      })
+      .finally(() => setLoading(false));
   }, [id]);
 
   useEffect(() => { fetchDrive(); }, [fetchDrive]);
@@ -444,18 +425,6 @@ export default function DriveDetail() {
         raised_amount: verifyData.raised_amount,
         donor_count: verifyData.donor_count || (d.donor_count || 0) + 1,
       }));
-    }
-    if (user) {
-      setRecent((prev) => [
-        {
-          donor_name: user.name.split(' ')[0] + ' ' + (user.name.split(' ')[1]?.[0] || '') + '.',
-          amount: donatedAmt,
-          date: new Date().toISOString(),
-          real: true,
-          fresh: true,
-        },
-        ...prev,
-      ].slice(0, 8));
     }
     // Confetti burst
     setConfetti(true);
@@ -586,47 +555,7 @@ export default function DriveDetail() {
                 </p>
               </div>
 
-              {/* Recent donors */}
-              <div className="card p-6">
-                <div className="mb-5 flex items-center justify-between gap-4">
-                  <div>
-                    <h2 className="text-xl text-forest-950 dark:text-cream-100">Recent donations</h2>
-                    <p className="mt-0.5 text-sm text-forest-500 dark:text-forest-400">Recent contribution activity.</p>
-                  </div>
-                  <span className="badge-terra">{drive.donor_count || 0} donors</span>
-                </div>
 
-                <div className="space-y-2.5">
-                  {recentDonors.map((donor, index) => (
-                    <div
-                      key={index}
-                      className={`flex items-center gap-3 rounded-xl p-3.5 transition-all ${
-                        donor.fresh
-                          ? 'border border-terra-200 bg-terra-50 dark:border-terra-900/50 dark:bg-terra-900/15'
-                          : 'surface-muted'
-                      }`}
-                      style={donor.fresh ? { animation: 'slide-up-fade 0.4s ease both' } : {}}
-                    >
-                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-terra-100 text-sm font-bold text-terra-700 dark:bg-terra-900/30 dark:text-terra-300">
-                        {donor.donor_name.charAt(0).toUpperCase()}
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm font-medium text-forest-900 dark:text-cream-100">
-                          {donor.donor_name}
-                          {donor.fresh && <span className="ml-2 text-xs text-terra-600 dark:text-terra-400">· just now</span>}
-                        </p>
-                        {!donor.fresh && <p className="text-xs text-forest-500 dark:text-forest-400">{timeAgo(donor.date)}</p>}
-                      </div>
-                      <span className="text-sm font-semibold text-terra-700 dark:text-terra-300">
-                        ₹{donor.amount?.toLocaleString('en-IN')}
-                      </span>
-                    </div>
-                  ))}
-                  {recentDonors.length === 0 && (
-                    <p className="py-6 text-center text-sm text-forest-500 dark:text-forest-400">No donations recorded yet — be the first!</p>
-                  )}
-                </div>
-              </div>
             </div>
 
             {/* ── Right: Sticky sidebar (2/5) ── */}

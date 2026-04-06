@@ -192,9 +192,6 @@ export default function Landing() {
           <div className="mb-10 max-w-2xl">
             <p className="section-kicker">Adoption Process</p>
             <h2 className="section-title mt-2">How the process works</h2>
-            <p className="mt-3 text-sm leading-7 text-forest-500 dark:text-forest-400">
-              The process is designed to protect animal welfare while helping applicants prepare for long-term care responsibilities.
-            </p>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
