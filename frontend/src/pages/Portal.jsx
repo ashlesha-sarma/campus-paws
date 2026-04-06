@@ -45,9 +45,6 @@ export default function Portal() {
           <h1 className="text-6xl font-black tracking-tight text-forest-950 sm:text-8xl dark:text-cream-100">
             Campus<span className="text-terra-500">Paws</span>
           </h1>
-          <p className="mt-6 text-xl text-forest-600 dark:text-forest-300 font-medium">
-            Choose your portal to begin
-          </p>
         </div>
 
         <div className="grid w-full gap-6 sm:grid-cols-2">
@@ -60,17 +57,17 @@ export default function Portal() {
             darkColor="dark:bg-terra-600"
           />
           <RoleCard
-            title="User & Student"
+            title="User"
             desc="Browse animals, apply for adoption, contribute to donation drives, and stay updated with campus welfare."
             icon={UserIcon}
             to="/login"
-            color="bg-forest-900 text-cream-100"
-            darkColor="dark:bg-forest-800"
+            color="bg-terra-500 text-white"
+            darkColor="dark:bg-terra-600"
           />
         </div>
 
         <div className="mt-16 text-sm text-forest-400 dark:text-forest-600">
-           &copy; 2026 CampusPaws Welfare Initiative
+           &copy; 2026 CampusPaws Animal Welfare Initiative
         </div>
       </div>
     </div>
