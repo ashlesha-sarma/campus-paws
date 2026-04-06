@@ -65,9 +65,9 @@ export default function AdminDashboard() {
         ) : (
           <>
             <StatCard icon={PawIcon} label="Total animals" value={stats?.total_animals} color="bg-terra-100 dark:bg-terra-900/30 text-terra-500" to="/admin/manage-animals" />
-            <StatCard icon={CheckCircleIcon} label="Available" value={stats?.available_animals} color="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600" to="/admin/manage-animals" />
+            <StatCard icon={CheckCircleIcon} label="Available" value={stats?.available_animals} color="bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600" to="/admin/manage-animals" />
             <StatCard icon={UsersIcon} label="Registered users" value={stats?.total_users} color="bg-blue-100 dark:bg-blue-900/30 text-blue-600" />
-            <StatCard icon={HeartIcon} label="Total donated" value={`Rs. ${Number(stats?.total_donations || 0).toLocaleString()}`} color="bg-green-100 dark:bg-green-900/30 text-green-600" to="/admin/manage-drives" />
+            <StatCard icon={HeartIcon} label="Total donated" value={`Rs. ${Number(stats?.total_donations || 0).toLocaleString()}`} color="bg-terra-50 dark:bg-terra-900/20 text-terra-600" to="/admin/manage-drives" />
             <StatCard icon={ClipboardIcon} label="Pending requests" value={stats?.pending_requests} color="bg-amber-100 dark:bg-amber-900/30 text-amber-600" to="/admin/requests" sub="Awaiting review" />
             <StatCard icon={CheckCircleIcon} label="Approved adoptions" value={stats?.approved_adoptions} color="bg-teal-100 dark:bg-teal-900/30 text-teal-600" to="/admin/requests" />
             <StatCard icon={UserIcon} label="Community posts" value={stats?.total_posts} color="bg-purple-100 dark:bg-purple-900/30 text-purple-600" to="/admin/manage-posts" />
@@ -77,8 +77,11 @@ export default function AdminDashboard() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="card p-5">
-          <h2 className="mb-4 text-lg text-forest-950 dark:text-cream-100">Quick actions</h2>
+        <div className="card p-7 border-terra-200 dark:border-forest-800 shadow-md">
+          <div className="mb-6 flex items-center justify-between border-b border-terra-100 pb-3 dark:border-forest-800">
+            <h2 className="text-xl font-bold text-forest-950 dark:text-cream-100">Quick actions</h2>
+            <div className="h-1 w-12 rounded-full bg-terra-400" />
+          </div>
           <div className="grid grid-cols-2 gap-3">
             {QUICK.map((item) => {
               const Icon = item.icon;
@@ -99,8 +102,11 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="card p-5">
-          <h2 className="mb-4 text-lg text-forest-950 dark:text-cream-100">Recent activity</h2>
+        <div className="card p-7 border-terra-200 dark:border-forest-800 shadow-md">
+          <div className="mb-6 flex items-center justify-between border-b border-terra-100 pb-3 dark:border-forest-800">
+            <h2 className="text-xl font-bold text-forest-950 dark:text-cream-100">Recent activity</h2>
+            <div className="h-1 w-12 rounded-full bg-terra-400" />
+          </div>
           {loading ? (
             <div className="space-y-3">
               {Array.from({ length: 5 }).map((_, i) => (

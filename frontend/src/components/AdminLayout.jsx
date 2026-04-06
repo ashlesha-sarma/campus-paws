@@ -25,11 +25,12 @@ const navItems = [
 ];
 
 export default function AdminLayout() {
-  const { user, logout } = useAuth();
+  const { user, loading, logout } = useAuth();
   const { dark, toggle } = useTheme();
   const nav = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  if (loading) return null;
   if (!user) return <Navigate to="/admin/login" replace />;
   if (user.role !== 'admin') return <Navigate to="/" replace />;
 
