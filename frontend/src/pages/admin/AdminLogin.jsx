@@ -41,12 +41,9 @@ export default function AdminLogin() {
 
       <div className="mx-auto flex min-h-screen w-full max-w-md items-center justify-center py-10">
         <div className="card w-full p-8 shadow-2xl">
-          <div className="mb-8 text-center">
-            <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-terra-500 text-white shadow-lg">
-              <LogoMark className="h-6 w-6" />
-            </div>
-            <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-terra-100 text-terra-600 dark:bg-terra-900/20 dark:text-terra-300">
-              <SettingsIcon className="h-5 w-5" />
+          <div className="mb-10 text-center">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-terra-500 text-white shadow-lg">
+              <SettingsIcon className="h-8 w-8" />
             </div>
             <h1 className="text-3xl font-bold text-forest-950 dark:text-cream-100">Admin sign in</h1>
             <p className="mt-2 text-sm text-forest-500 dark:text-forest-400">Access the CampusPaws administrative workspace.</p>

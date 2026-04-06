@@ -44,9 +44,7 @@ export default function Login() {
             </div>
             <p className="section-kicker">Account Access</p>
             <h1 className="mt-2 text-3xl font-bold text-forest-950 dark:text-cream-100">Sign in</h1>
-            <p className="mt-3 text-sm leading-7 text-forest-500 dark:text-forest-400">
-              Enter your registered email address and password to continue.
-            </p>
+           
           </div>
 
           <form onSubmit={submit} className="space-y-5">
@@ -112,7 +110,7 @@ export default function Login() {
             </div>
 
             <p className="text-center">
-              <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium text-forest-500 hover:text-terra-600 transition-colors dark:text-forest-400 dark:hover:text-terra-300">
+              <Link to="/home" className="inline-flex items-center gap-2 text-sm font-medium text-forest-500 hover:text-terra-600 transition-colors dark:text-forest-400 dark:hover:text-terra-300">
                 <ArrowLeftIcon className="h-4 w-4" />
                 Return to home
               </Link>

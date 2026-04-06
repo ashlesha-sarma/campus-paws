@@ -126,7 +126,7 @@ export default function Register() {
             </p>
 
             <p className="text-center border-t border-cream-200 pt-6 dark:border-forest-800">
-              <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium text-forest-500 hover:text-terra-600 transition-colors dark:text-forest-400 dark:hover:text-terra-300">
+              <Link to="/home" className="inline-flex items-center gap-2 text-sm font-medium text-forest-500 hover:text-terra-600 transition-colors dark:text-forest-400 dark:hover:text-terra-300">
                 <ArrowLeftIcon className="h-4 w-4" />
                 Return to home
               </Link>
