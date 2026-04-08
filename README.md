@@ -1,138 +1,35 @@
-# 🐾 CampusPaws v2.0
+# CampusPaws
+**A full-stack transparent crowdfunding and community adoption platform for campus animal welfare.**
 
-**Animal Welfare & Adoption Platform**  
-*Connecting Hearts, One Paw at a Time*
+## Overview
+CampusPaws provides an end-to-end operational platform enabling student organizations to transparently crowdfund for medical drives, coordinate adoptions, and manage stray populations. Built for high conversion, it processes simulated micro-transactions seamlessly with a premium, mobile-first checkout experience.
 
-> Ashlesha Sarma
-> Dept. of CSE, Tezpur University · IDEA Lab 3rd Semester, 2025
+## The Problem
+Universities and local communities often struggle to manage urgent funds for injured or stray animals. Campaigns are scattered across disconnected messaging groups, leading to donor fatigue, zero transparency in fund utilization, and disorganized rescue records.
 
----
+## The Solution
+A centralized application that digitizes animal welfare logistics. CampusPaws combines instant unified payment checkouts, dynamic real-time goal tracking, and structured adoption pipelines into one intuitive dashboard. Donors receive immediate feedback on the precise impact of their contributions, establishing trust and driving higher conversion rates.
 
-## ✨ Highlights
+## Key Features
+* **Processes** seamless micro-transactions via a complete Razorpay integration, supporting tier-based funding and custom monetary inputs.
+* **Visualizes** real-time donation milestones through dynamic progress bars and instant social-proof data feeds.
+* **Enables** administrators to securely manage multiple simultaneous welfare drives and analyze adoption metrics via a role-based dashboard.
+* **Optimizes** donor conversion via a friction-free, mobile-first bottom-sheet donation modal designed for rapid checkout.
 
-- 🎯 **Razorpay Test Mode** — real checkout flow with simulated fallback
-- 🎉 **Confetti animation** on successful donation
-- 📊 **Animated progress bar** with gradient + glow
-- 💚 **Live donor feed** (real + synthetic) per campaign
-- 📤 **Share buttons** — WhatsApp, Twitter, copy link
-- 💡 **Impact labels** — tell donors exactly what their money does
-- 🌙 **Dark mode** — system-aware, toggleable, persisted
-- 📱 **Mobile-first** — bottom-sheet donation modal on phones
-- 💬 **Toast notifications** — success / error feedback
-- ⚡ **Skeleton loaders** — on every async state
+## Impact / Why It Matters
+* **Drives Financial Trust:** Automates transaction recording and displays transparent, public funding milestones, eliminating manual pledge tracking.
+* **Increases Conversion:** Dynamic impact labels (e.g., "₹500 covers 1 month of food") actively connect financial inputs to tangible, real-world outcomes.
+* **Scales Community Action:** Consolidates chaotic social media sharing into a single source of truth, enabling secure, immediate mobilization for emergency rescues.
 
----
+## Tech Stack
+**Frontend:** React 18, Vite, Tailwind CSS 3  
+**Backend:** Node.js, Express  
+**Data & Services:** SQLite3, Razorpay APIs, Express Sessions  
 
-## 🚀 Quick Start
-
-### 1. Install
-
-```bash
-cd backend  && npm install
-cd ../frontend && npm install
+## System Design
+```text
+Donor Selects Tier → Razorpay Order Generation API → Secure Checkout UI → HMAC Verification Webhook → SQLite DB Write → Real-time State Update
 ```
 
-### 2. (Optional) Add your Razorpay TEST keys
-
-Create `backend/.env` or edit `backend/routes/donations.js`:
-
-```env
-RAZORPAY_KEY_ID=rzp_test_XXXXXXXXXXXXXXXX
-RAZORPAY_KEY_SECRET=XXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-> Get free test keys at https://dashboard.razorpay.com  
-> Without keys the app runs in **Simulation Mode** — payments auto-succeed with no checkout UI.
-
-### 3. Run
-
-```bash
-# Terminal 1
-cd backend && npm run dev      # → http://localhost:4000
-
-# Terminal 2
-cd frontend && npm run dev     # → http://localhost:5173
-```
-
----
-
-## 🔐 Demo Credentials
-
-| Role  | Email                      | Password    |
-|-------|----------------------------|-------------|
-| User  | `demo@student.test`        | `Demo@123`  |
-| Admin | `admin@campuspaws.test`    | `Admin@123` |
-
-Admin panel: `http://localhost:5173/admin/login`
-
----
-
-## 💳 Payment Flow
-
-```
-User clicks "Donate Now"
-  → Picks preset (₹100/250/500/1k/2.5k/5k) or custom amount
-  → Sees impact label ("₹500 covers 1 month of food!")
-  → Backend creates Razorpay order (POST /api/donations/create-order)
-    ├── Real keys  → Razorpay Checkout UI opens
-    └── No keys    → Simulated order (skips UI)
-  → On success → POST /api/donations/verify-payment
-    ├── Verifies HMAC signature (real mode)
-    └── Records donation in SQLite + updates drive.raised_amount
-  → Frontend: confetti 🎉 + toast + live feed update + progress bar animates
-```
-
-### Razorpay test cards
-| Card              | Number              | CVV | Expiry  |
-|-------------------|---------------------|-----|---------|
-| Visa (success)    | 4111 1111 1111 1111 | any | any future |
-| Mastercard        | 5267 3181 8797 5449 | any | any future |
-
-UPI test: `success@razorpay`
-
----
-
-## 🗂 Structure
-
-```
-campuspaws/
-├── backend/
-│   ├── server.js
-│   ├── db.js                  ← auto-seeds on first run
-│   ├── middleware/auth.js
-│   └── routes/
-│       ├── donations.js       ← /create-order, /verify-payment
-│       ├── animals.js
-│       ├── adoptions.js
-│       ├── posts.js
-│       └── admin.js
-│
-└── frontend/src/
-    ├── pages/user/
-    │   ├── Landing.jsx        ← hero + animated stats
-    │   ├── Donations.jsx      ← listing with donor counts
-    │   ├── DriveDetail.jsx    ← GoFundMe-style + Razorpay modal
-    │   ├── Animals.jsx
-    │   └── ...
-    └── pages/admin/
-        ├── ManageDrives.jsx   ← analytics + recent donors per drive
-        └── ...
-```
-
----
-
-## 🛠 Stack
-
-| Layer    | Tech                                  |
-|----------|---------------------------------------|
-| Frontend | React 18, Vite, Tailwind CSS 3        |
-| Fonts    | Playfair Display + DM Sans            |
-| Backend  | Node.js, Express                      |
-| Database | SQLite3                               |
-| Payments | Razorpay (test mode)                  |
-| Auth     | Express Sessions + bcryptjs           |
-| Uploads  | Multer                                |
-
----
-
-*Made with ❤️ for campus animals at Tezpur University*
+## Live Demo
+**[Launch CampusPaws Platform →](https://campus-paws.vercel.app)**
